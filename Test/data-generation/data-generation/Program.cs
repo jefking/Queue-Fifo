@@ -15,12 +15,16 @@ namespace data_generation
 
             for (var i = 0; i < 10; i++)
             {
+                var v = random.Next(0, 10);
+
                 var d = new Data
                 {
-                    OccurredOn = DateTime.Now.AddMinutes(i),
-                    EnqueuedAt = DateTime.Now.AddMinutes(i + 1),
+                    OccurredOn = DateTime.Now.AddSeconds(i),
+                    EnqueuedAt = DateTime.Now.AddMinutes(1).AddSeconds(v),
                     Value = (short)i,
                 };
+
+                //Console.WriteLine("{0} | {1}", d.OccurredOn, d.EnqueuedAt);
 
                 datas.Add(d);
             }
