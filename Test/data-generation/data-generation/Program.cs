@@ -20,7 +20,7 @@ namespace data_generation
                 var d = new Data
                 {
                     OccurredOn = DateTime.Now.AddSeconds(i),
-                    EnqueuedAt = DateTime.Now.AddMinutes(1).AddSeconds(v),
+                    EnqueuedAt = DateTime.Now.AddMinutes(1).AddSeconds(i),
                     Value = (short)i,
                 };
 
