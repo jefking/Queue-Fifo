@@ -11,6 +11,7 @@ namespace data_generation
         static void Main(string[] args)
         {
             var datas = new List<Data>();
+            var random = new Random();
 
             for (var i = 0; i < 10; i++)
             {
@@ -23,8 +24,10 @@ namespace data_generation
 
                 datas.Add(d);
             }
+            
+            Console.Write(Newtonsoft.Json.JsonConvert.SerializeObject(datas));
 
-            Console.Write(datas.ToString());
+            Console.Read();
         }
     }
 
