@@ -9,6 +9,7 @@
         {
             var connection = ConfigurationManager.AppSettings["Microsoft.ServiceBus.ConnectionString"];
             var subscriber = new TopicSubscriber("ctorder", connection, "bydevice", "*");
+
         }
     }
 }
