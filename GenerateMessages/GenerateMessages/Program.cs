@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GenerateMessages
+﻿namespace GenerateMessages
 {
+    using System.Configuration;
+
     class Program
     {
         static void Main(string[] args)
         {
+            var connection = ConfigurationManager.AppSettings["Microsoft.ServiceBus.ConnectionString"];
         }
     }
 }
