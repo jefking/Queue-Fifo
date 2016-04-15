@@ -1,5 +1,6 @@
 ﻿namespace GenerateMessages
 {
+    using System;
     using System.Collections.Generic;
     using System.Configuration;
     using System.Threading.Tasks;
@@ -19,9 +20,10 @@
 
             for (var i = 0; i < 100; i++)
             {
-                var s = new Sample();
+                var s = new Sample()
                 {
-
+                    DeviceId = Guid.NewGuid(),
+                    OccurredOn = DateTime.UtcNow,
                 };
 
                 tasks.Add(sender.Send(s));
