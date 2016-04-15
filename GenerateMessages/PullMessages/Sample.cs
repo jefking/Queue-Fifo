@@ -1,0 +1,6 @@
+﻿namespace PullMessages
+{
+    class Sample
+    {
+    }
+}

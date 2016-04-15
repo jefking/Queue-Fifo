@@ -1,0 +1,6 @@
+﻿namespace GenerateMessages
+{
+    class Sample
+    {
+    }
+}
