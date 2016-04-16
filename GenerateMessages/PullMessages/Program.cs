@@ -1,11 +1,10 @@
 ﻿namespace PullMessages
 {
-    using System;
     using System.Configuration;
-    using System.Diagnostics;
     using System.Threading;
     using System.Threading.Tasks;
     using King.Service.ServiceBus;
+    using Models;
 
     public class Program
     {
@@ -34,21 +33,6 @@
 
             var subscriber = new BusTopicSubscription(topicName, connection, subscriptionName, filter);
             await subscriber.CreateIfNotExists();
-        }
-
-        public class Handler : IBusEventHandler<Sample>
-        {
-            public void OnError(string action, Exception ex)
-            {
-                Trace.TraceError("Action '{0}' caused: {1}", action, ex);
-            }
-
-            public Task<bool> Process(Sample data)
-            {
-                Trace.TraceInformation(data.ToString());
-
-                return new Task<bool>(() => { return true; });
-            }
         }
     }
 }

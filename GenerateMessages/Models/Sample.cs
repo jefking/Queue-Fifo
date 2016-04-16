@@ -1,4 +1,4 @@
-﻿namespace PullMessages
+﻿namespace Models
 {
     using System;
 
