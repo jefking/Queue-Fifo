@@ -12,13 +12,13 @@
         static void Main(string[] args)
         {
             var connection = ConfigurationManager.AppSettings["Microsoft.ServiceBus.ConnectionString"];
-            string topicName = "ctorder";
-            string subscriptionName = "bydevice";
-            string filter = "SELECT *";
+            var topicName = "ctorder";
+            var subscriptionName = "bydevice";
+            string filter = null; //"SELECT *";
 
             Initialize(connection, topicName, subscriptionName, filter).Wait();
 
-            var events = new BusEvents<Sample>(new BusSubscriptionReciever(topicName, connection, filter), new Handler());
+            var events = new BusEvents<Sample>(new BusSubscriptionReciever(topicName, connection, subscriptionName), new Handler());
             events.Run();
 
             while (true)
