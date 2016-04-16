@@ -2,7 +2,6 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Configuration;
     using System.Diagnostics;
     using System.Threading.Tasks;
     using King.Service.ServiceBus;
@@ -13,22 +12,11 @@
         static void Main(string[] args)
         {
             var name = "ctorder";
-            var connection = ConfigurationManager.AppSettings["Microsoft.ServiceBus.ConnectionString"];
+            var connection = Config.Connection;
             var init = new BusTopic(name, connection);
             init.CreateIfNotExists().Wait();
 
-            var samples = new List<Sample>();
-
-            for (var i = 0; i < 100; i++)
-            {
-                var s = new Sample()
-                {
-                    DeviceId = Guid.NewGuid(),
-                    OccurredOn = DateTime.UtcNow,
-                };
-
-                samples.Add(s);
-            }
+            var samples = Create();
 
             Send(name, connection, samples).Wait();
         }
@@ -43,6 +31,30 @@
 
                 await sender.Send(s);
             }
+        }
+
+        public static IEnumerable<Sample> Create()
+        {
+            var random = new Random();
+            var samples = new List<Sample>();
+
+            foreach (var device in Config.Devices)
+            {
+                for (var i = 0; i < 10; i++)
+                {
+                    var v = random.Next(0, 10);
+
+                    var s = new Sample()
+                    {
+                        OccurredOn = DateTime.Now.AddSeconds(v),
+                        DeviceId = device,
+                    };
+
+                    samples.Add(s);
+                }
+            }
+
+            return samples;
         }
     }
 }

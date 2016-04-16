@@ -1,6 +1,5 @@
 ﻿namespace PullMessages
 {
-    using System.Configuration;
     using System.Threading;
     using System.Threading.Tasks;
     using King.Service.ServiceBus;
@@ -10,7 +9,7 @@
     {
         static void Main(string[] args)
         {
-            var connection = ConfigurationManager.AppSettings["Microsoft.ServiceBus.ConnectionString"];
+            var connection = Config.Connection;
             var topicName = "ctorder";
             var subscriptionName = "bydevice";
             string filter = null; //"SELECT *";
