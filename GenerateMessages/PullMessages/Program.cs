@@ -3,17 +3,28 @@
     using System;
     using System.Configuration;
     using System.Diagnostics;
+    using System.Threading;
     using System.Threading.Tasks;
     using King.Service.ServiceBus;
-    using King.Service.ServiceBus.Wrappers;
-    using Microsoft.ServiceBus.Messaging;
-    class Program
+
+    public class Program
     {
         static void Main(string[] args)
         {
             var connection = ConfigurationManager.AppSettings["Microsoft.ServiceBus.ConnectionString"];
+            string topicName = "ctorder";
+            string subscriptionName = "bydevice";
+            string filter = "SELECT *";
 
-            Initialize(connection, "ctorder", "bydevice", "").Wait();
+            Initialize(connection, topicName, subscriptionName, filter).Wait();
+
+            var events = new BusEvents<Sample>(new BusSubscriptionReciever(topicName, connection, filter), new Handler());
+            events.Run();
+
+            while (true)
+            {
+                Thread.Sleep(100);
+            }
         }
 
         static async Task Initialize(string connection, string topicName, string subscriptionName, string filter)
@@ -21,11 +32,8 @@
             var init = new BusTopic(topicName, connection);
             await init.CreateIfNotExists();
 
-            var subscriber = new BusTopicSubscriber(topicName, connection, subscriptionName, filter);
+            var subscriber = new BusTopicSubscription(topicName, connection, subscriptionName, filter);
             await subscriber.CreateIfNotExists();
-
-            var tc = TopicClient.CreateFromConnectionString(connection, topicName);
-            var s = new BusEvents<Sample>(new BusTopicClient(tc), new Handler());
         }
 
         public class Handler : IBusEventHandler<Sample>
@@ -39,7 +47,7 @@
             {
                 Trace.TraceInformation(data.ToString());
 
-                return true;
+                return new Task<bool>(() => { return true; });
             }
         }
     }
