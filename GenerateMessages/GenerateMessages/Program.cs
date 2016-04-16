@@ -39,7 +39,7 @@
 
             foreach (var s in samples)
             {
-                Trace.TraceInformation("Sending: {0}", s.ToString());
+                Trace.TraceInformation("Sending: {0} - {1}", s.DeviceId, s.OccurredOn);
 
                 await sender.Send(s);
             }
