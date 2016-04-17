@@ -12,7 +12,7 @@
             var connection = Config.Connection;
             var topicName = "ctorder";
             var subscriptionName = "bydevice{0}";
-            var filter = "{0}";
+            var filter = "DeviceId = '{0}'";
 
             var init = new BusTopic(topicName, connection);
             init.CreateIfNotExists().Wait();
@@ -20,7 +20,8 @@
             foreach (var device in Config.Devices)
             {
                 var sname = string.Format(subscriptionName, device.ToString().Split('-')[0]);
-                var subscriber = new BusTopicSubscription(topicName, connection, sname, string.Format(filter, device));
+                var dfilter = string.Format(filter, device);
+                var subscriber = new BusTopicSubscription(topicName, connection, sname, dfilter);
                 subscriber.CreateIfNotExists().Wait();
             }
 

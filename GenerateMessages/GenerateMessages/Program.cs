@@ -5,6 +5,7 @@
     using System.Diagnostics;
     using System.Threading.Tasks;
     using King.Service.ServiceBus;
+    using Microsoft.ServiceBus.Messaging;
     using Models;
 
     public class Program
@@ -21,22 +22,22 @@
             Send(name, connection, samples).Wait();
         }
 
-        public static async Task Send(string name, string connection, IEnumerable<Sample> samples)
+        public static async Task Send(string name, string connection, IEnumerable<BrokeredMessage> samples)
         {
             var sender = new BusTopicSender("ctorder", connection);
 
             foreach (var s in samples)
             {
-                Trace.TraceInformation("Sending: {0} - {1}", s.DeviceId, s.OccurredOn);
+                Trace.TraceInformation("Sending: {0}", s.Properties["DeviceId"]);
 
                 await sender.Send(s);
             }
         }
 
-        public static IEnumerable<Sample> Create()
+        public static IEnumerable<BrokeredMessage> Create()
         {
             var random = new Random();
-            var samples = new List<Sample>();
+            var samples = new List<BrokeredMessage>();
 
             foreach (var device in Config.Devices)
             {
@@ -50,7 +51,11 @@
                         DeviceId = device,
                     };
 
-                    samples.Add(s);
+                    var msg = new BrokeredMessage(s);
+
+                    msg.Properties["DeviceId"] = device.ToString();
+
+                    samples.Add(msg);
                 }
             }
 
