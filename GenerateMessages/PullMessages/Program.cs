@@ -17,8 +17,8 @@
             Initialize(connection, topicName, subscriptionName, filter).Wait();
 
             var events = new BusEvents<Sample>(new BusSubscriptionReciever(topicName, connection, subscriptionName), new Handler());
-            events.Run();
-
+            Task.Run(() => { events.Run(); });
+            
             while (true)
             {
                 Thread.Sleep(100);
