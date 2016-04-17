@@ -18,7 +18,7 @@
         {
             Trace.TraceInformation("{2}: Recieving: {0} - {1}", data.DeviceId, data.OccurredOn, ++i);
 
-            return new Task<bool>(() => { return true; });
+            return Task.FromResult<bool>(true);
         }
     }
 }

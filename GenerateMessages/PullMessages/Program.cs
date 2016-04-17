@@ -1,7 +1,7 @@
 ﻿namespace PullMessages
 {
+    using System.Collections.Generic;
     using System.Threading;
-    using System.Threading.Tasks;
     using King.Service.ServiceBus;
     using Models;
 
@@ -11,27 +11,33 @@
         {
             var connection = Config.Connection;
             var topicName = "ctorder";
-            var subscriptionName = "bydevice";
-            string filter = null; //"SELECT *";
+            var subscriptionName = "bydevice{0}";
+            var filter = "{0}";
 
-            Initialize(connection, topicName, subscriptionName, filter).Wait();
+            var init = new BusTopic(topicName, connection);
+            init.CreateIfNotExists().Wait();
 
-            var events = new BusEvents<Sample>(new BusSubscriptionReciever(topicName, connection, subscriptionName), new Handler());
-            Task.Run(() => { events.Run(); });
-            
+            foreach (var device in Config.Devices)
+            {
+                var sname = string.Format(subscriptionName, device.ToString().Split('-')[0]);
+                var subscriber = new BusTopicSubscription(topicName, connection, sname, string.Format(filter, device));
+                subscriber.CreateIfNotExists().Wait();
+            }
+
+            var events = new List<BusEvents<Sample>>();
+
+            foreach (var device in Config.Devices)
+            {
+                var sname = string.Format(subscriptionName, device.ToString().Split('-')[0]);
+                var evt = new BusEvents<Sample>(new BusSubscriptionReciever(topicName, connection, sname), new Handler());
+                events.Add(evt);
+                evt.Run();
+            }
+
             while (true)
             {
                 Thread.Sleep(100);
             }
-        }
-
-        static async Task Initialize(string connection, string topicName, string subscriptionName, string filter)
-        {
-            var init = new BusTopic(topicName, connection);
-            await init.CreateIfNotExists();
-
-            var subscriber = new BusTopicSubscription(topicName, connection, subscriptionName, filter);
-            await subscriber.CreateIfNotExists();
         }
     }
 }
