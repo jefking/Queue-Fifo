@@ -37,20 +37,30 @@
         #region Methods
         protected override async Task Process(IEnumerable<IQueued<Sample>> msgs)
         {
-            var datas = new List<Sample>();
+            var datas = new List<Helper>();
             foreach (var msg in msgs)
             {
-                var d = await msg.Data();
+                var d = new Helper
+                {
+                    Message = msg,
+                    Data = await msg.Data()
+                };
+
                 datas.Add(d);
             }
 
-            var ordered = datas.OrderBy(d => d.OccurredOn);
+            var process = from d in datas
+                          orderby d.Data.OccurredOn
+                          select d.Message;
 
-            //Abandon messages not ready for processing
-            //Work on messages that are ready for processing
-
-            await this.BatchJob.Process(datas);
+            await base.Process(process);
         }
         #endregion
+
+        public class Helper
+        {
+            public IQueued<Sample> Message;
+            public Sample Data;
+        }
     }
 }
