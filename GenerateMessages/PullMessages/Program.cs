@@ -30,7 +30,7 @@
             foreach (var device in Config.Devices)
             {
                 var sname = string.Format(subscriptionName, device.ToString().Split('-')[0]);
-                var evt = new BusEvents<Sample>(new BusSubscriptionReciever(topicName, connection, sname), new Handler());
+                var evt = new BusEvents<Sample>(new BusSubscriptionReciever(topicName, connection, sname), new Handler(device));
                 events.Add(evt);
                 evt.Run();
             }
