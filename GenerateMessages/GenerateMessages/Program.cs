@@ -45,7 +45,7 @@
             {
                 for (var i = 0; i < 10; i++)
                 {
-                    var v = random.Next(0, 10);
+                    var v = random.Next(0, 60);
 
                     var s = new Sample()
                     {

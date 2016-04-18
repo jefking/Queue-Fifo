@@ -5,6 +5,7 @@
     using King.Service.Timing;
     using Models;
     using System.Collections.Generic;
+    using System.Diagnostics;
     using System.Linq;
     using System.Threading.Tasks;
     public class DequeueBatchProcessBatch : DequeueBatch<Sample>
@@ -49,11 +50,19 @@
                 datas.Add(d);
             }
 
-            var process = from d in datas
-                          orderby d.Data.OccurredOn
-                          select d.Message;
 
-            await base.Process(process);
+            //Just Debugging
+            foreach (var p in from d in datas
+                              orderby d.Data.OccurredOn
+                              select d.Data.OccurredOn)
+            {
+                Trace.TraceInformation("{0}", p);
+            }
+            //Just Debugging
+
+            await base.Process(from d in datas
+                               orderby d.Data.OccurredOn
+                               select d.Message);
         }
         #endregion
 

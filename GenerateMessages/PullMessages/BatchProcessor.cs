@@ -23,7 +23,7 @@
 
         public Task<bool> Process(Sample data)
         {
-            Trace.TraceInformation("Received: {0}-{1}", data.DeviceId, data.OccurredOn);
+            Trace.TraceInformation("Occurred On: {0}", data.OccurredOn);
 
             return Task.FromResult<bool>(true);
         }

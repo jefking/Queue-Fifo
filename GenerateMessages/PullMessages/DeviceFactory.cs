@@ -1,7 +1,6 @@
 ﻿namespace PullMessages
 {
     using King.Service;
-    using King.Service.Data;
     using King.Service.ServiceBus;
     using Models;
     using System.Collections.Generic;
@@ -17,15 +16,17 @@
 
             var tasks = new List<IRunnable>();
 
-            tasks.Add(new InitializeStorageTask(new BusTopic(topicName, connection)));
+            //tasks.Add(new InitializeStorageTask(new BusTopic(topicName, connection)));
 
             foreach (var device in passthrough.Devices)
             {
                 var sname = string.Format(subscriptionName, device.ToString().Split('-')[0]);
                 var dfilter = string.Format(filter, device);
 
-                tasks.Add(new InitializeStorageTask(new BusTopicSubscription(topicName, connection, sname, dfilter)));
-                tasks.Add(new RecurringRunner(new DequeueBatch<Sample>(new BusPoller<Sample>(new BusSubscriptionReciever(topicName, connection, sname)), new BatchProcessor(), 32, 1, 10)));
+                // tasks.Add(new InitializeStorageTask(new BusTopicSubscription(topicName, connection, sname, dfilter)));
+                tasks.Add(new RecurringRunner(new DequeueBatchProcessBatch(new BusPoller<Sample>(new BusSubscriptionReciever(topicName, connection, sname)), new BatchProcessor(), 32)));
+
+                break;
             }
 
             return tasks;
