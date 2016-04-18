@@ -1,19 +1,20 @@
 ﻿namespace GenerateMessages
 {
+    using King.Service.ServiceBus;
+    using Microsoft.ServiceBus.Messaging;
+    using Models;
     using System;
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.Threading.Tasks;
-    using King.Service.ServiceBus;
-    using Microsoft.ServiceBus.Messaging;
-    using Models;
 
     public class Program
     {
         static void Main(string[] args)
         {
             var name = "ctorder";
-            var connection = Config.Connection;
+            var config = new Config();
+            var connection = config.Connection;
             var init = new BusTopic(name, connection);
             init.CreateIfNotExists().Wait();
 
@@ -38,8 +39,9 @@
         {
             var random = new Random();
             var samples = new List<BrokeredMessage>();
+            var config = new Config();
 
-            foreach (var device in Config.Devices)
+            foreach (var device in config.Devices)
             {
                 for (var i = 0; i < 10; i++)
                 {
