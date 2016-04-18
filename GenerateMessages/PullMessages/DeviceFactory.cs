@@ -25,7 +25,7 @@
                 var dfilter = string.Format(filter, device);
 
                 tasks.Add(new InitializeStorageTask(new BusTopicSubscription(topicName, connection, sname, dfilter)));
-                tasks.Add(new RecurringRunner(new TopicBatchDynamic<Sample>(topicName, connection, sname, new Handler(), 1, 10)));
+                tasks.Add(new RecurringRunner(new DequeueBatch<Sample>(new BusPoller<Sample>(new BusSubscriptionReciever(topicName, connection, sname)), new Handler(), 32, 1, 10)));
             }
 
             return tasks;
