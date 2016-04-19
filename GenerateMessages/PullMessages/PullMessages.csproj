@@ -95,6 +95,7 @@
     <Compile Include="DequeueBatchProcessBatch.cs" />
     <Compile Include="DeviceFactory.cs" />
     <Compile Include="BatchProcessor.cs" />
+    <Compile Include="Helper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -1,6 +1,5 @@
 ﻿namespace PullMessages
 {
-    using King.Azure.Data;
     using King.Service.ServiceBus;
     using Models;
     using System;
@@ -8,7 +7,7 @@
     using System.Diagnostics;
     using System.Threading.Tasks;
 
-    public class BatchProcessor : IBusEventHandler<Sample>, IBatchJob<Sample>
+    public class BatchProcessor : IBusEventHandler<Sample>
     {
         public async Task<bool> Process(IEnumerable<Sample> datas)
         {
@@ -27,13 +26,10 @@
 
             return Task.FromResult<bool>(true);
         }
+
         public void OnError(string action, Exception ex)
         {
             Trace.TraceError("Error '{0}' caused: {1}", action, ex);
         }
     }
-
-    public interface IBatchJob<T> : IProcessor<T>, IProcessor<IEnumerable<T>>
-    { }
-
 }
