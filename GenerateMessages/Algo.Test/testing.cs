@@ -19,7 +19,7 @@
         {
             var batch = LoadFile("batches");
             var processor = Substitute.For<IProcessor<Sample>>();
-            
+
             var i = 0;
             foreach (var b in batch)
             {
