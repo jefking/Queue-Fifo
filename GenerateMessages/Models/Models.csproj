@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BatchProcessor.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="DequeueBatchProcessBatch.cs" />
     <Compile Include="Helper.cs" />

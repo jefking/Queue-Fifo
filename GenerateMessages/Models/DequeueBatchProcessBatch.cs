@@ -2,6 +2,7 @@
 {
     using King.Azure.Data;
     using King.Service.Data;
+    using King.Service.ServiceBus;
     using King.Service.Timing;
     using Models;
     using System;
@@ -22,6 +23,11 @@
         /// <param name="maximumPeriodInSeconds">Maximum, time in seconds</param>
         public DequeueBatchProcessBatch(IPoller<Sample> poller, IProcessor<Sample> processor, byte batchCount = 5, int minimumPeriodInSeconds = BaseTimes.MinimumStorageTiming, int maximumPeriodInSeconds = BaseTimes.MaximumStorageTiming)
             : base(poller, processor, batchCount, minimumPeriodInSeconds, maximumPeriodInSeconds)
+        {
+        }
+
+        public DequeueBatchProcessBatch()
+            : base(new TopicPoller<Sample>(), new BatchProcessor())
         {
         }
         #endregion
@@ -55,7 +61,7 @@
 
         }
 
-        private async Task FifoPercentage(IOrderedEnumerable<Helper> data)
+        public async Task FifoPercentage(IOrderedEnumerable<Helper> data)
         {
             var i = 0;
             foreach (var msg in data.Select(d => d.Message)) // Nice thing is that Data is not needed to interact with list
@@ -73,7 +79,7 @@
             }
         }
 
-        private async Task MessageRelativeTiming(IOrderedEnumerable<Helper> data)
+        public async Task MessageRelativeTiming(IOrderedEnumerable<Helper> data)
         {
             var relative = data.First().Data.OccurredOn.AddSeconds(5);// Messages must be > 5s newer than oldest message
 
@@ -88,7 +94,7 @@
             }
         }
 
-        private async Task SeverRelativeTiming(IOrderedEnumerable<Helper> data)
+        public async Task SeverRelativeTiming(IOrderedEnumerable<Helper> data)
         {
             var relative = DateTime.UtcNow.AddSeconds(-5);// Messages must be > 5s old
 
@@ -105,7 +111,7 @@
 
         //WHAT IF IT IS A COMBINATION??
 
-        private async Task Voltron(IOrderedEnumerable<Helper> data)
+        public async Task Voltron(IOrderedEnumerable<Helper> data)
         {
             var now = DateTime.UtcNow;
             var first = data.First().Data;
