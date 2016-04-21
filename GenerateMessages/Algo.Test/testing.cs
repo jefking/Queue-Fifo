@@ -1,7 +1,6 @@
 ﻿namespace Algo.Test
 {
     using King.Azure.Data;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Models;
     using Newtonsoft.Json;
     using NSubstitute;
@@ -10,14 +9,18 @@
     using System.IO;
     using System.Linq;
     using System.Threading.Tasks;
+    using NUnit.Framework;
 
-    [TestClass]
+    [TestFixture]
     public class testing
     {
-        [TestMethod]
-        public async Task Batches()
+        [TestCase("batches")]
+        [TestCase("device-out-of-order")]
+        [TestCase("in-order")]
+        [TestCase("queue-out-of-order")]
+        public async Task FifoPercentage(string file)
         {
-            var batch = LoadFile("batches");
+            var batch = LoadFile(file);
             var processor = Substitute.For<IProcessor<Sample>>();
 
             var i = 0;
