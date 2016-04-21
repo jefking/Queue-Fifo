@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "data", "data", "{0DCE05FD-D
 		..\DataSets\queue-out-of-order.json = ..\DataSets\queue-out-of-order.json
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algo.Test", "Algo.Test\Algo.Test.csproj", "{681ED21A-E27E-45D8-A7E9-49877FA2EF46}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,10 @@ Global
 		{F9B58655-BD33-44EF-9853-BFCFE647F7B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F9B58655-BD33-44EF-9853-BFCFE647F7B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F9B58655-BD33-44EF-9853-BFCFE647F7B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{681ED21A-E27E-45D8-A7E9-49877FA2EF46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{681ED21A-E27E-45D8-A7E9-49877FA2EF46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{681ED21A-E27E-45D8-A7E9-49877FA2EF46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{681ED21A-E27E-45D8-A7E9-49877FA2EF46}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
