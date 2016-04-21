@@ -26,8 +26,8 @@
         {
         }
 
-        public DequeueBatchProcessBatch()
-            : base(new TopicPoller<Sample>(), new BatchProcessor())
+        public DequeueBatchProcessBatch(IProcessor<Sample> processor)
+            : base(new TopicPoller<Sample>(), processor)
         {
         }
         #endregion

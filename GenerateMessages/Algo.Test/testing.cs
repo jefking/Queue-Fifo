@@ -1,8 +1,10 @@
 ﻿namespace Algo.Test
 {
+    using King.Azure.Data;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Models;
     using Newtonsoft.Json;
+    using NSubstitute;
     using PullMessages;
     using System.Collections.Generic;
     using System.IO;
@@ -15,8 +17,11 @@
         [TestMethod]
         public async Task Batches()
         {
+            var processor = Substitute.For<IProcessor<Sample>>();
+            processor.Process(Arg.Any<Sample>());
+
             var batch = LoadFile("batches");
-            var dbpb = new DequeueBatchProcessBatch();
+            var dbpb = new DequeueBatchProcessBatch(processor);
             await dbpb.FifoPercentage(batch);
 
             // Validate
@@ -34,6 +39,7 @@
                 var h = new Helper
                 {
                     Data = d,
+                    Message = Substitute.For<IQueued<Sample>>()
                 };
 
                 helpers.Add(h);
