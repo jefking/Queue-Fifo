@@ -14,10 +14,8 @@
     [TestFixture]
     public class testing
     {
-        [TestCase("batches")]
-        [TestCase("device-out-of-order")]
         [TestCase("in-order")]
-        [TestCase("queue-out-of-order")]
+        [TestCase("out-of-order")]
         public async Task FifoPercentage(string file)
         {
             var batch = LoadFile(file);
