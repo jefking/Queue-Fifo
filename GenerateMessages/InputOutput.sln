@@ -1,13 +1,21 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenerateMessages", "GenerateMessages\GenerateMessages.csproj", "{2F0780F6-35B3-493A-B0CE-2B87D12ADD98}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PullMessages", "PullMessages\PullMessages.csproj", "{A38F70EC-7037-41A7-87B8-F17D73D6A60C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{F9B58655-BD33-44EF-9853-BFCFE647F7B2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "data", "data", "{0DCE05FD-DD1D-4812-A6F7-5AA9E5406335}"
+	ProjectSection(SolutionItems) = preProject
+		..\DataSets\batches.json = ..\DataSets\batches.json
+		..\DataSets\device-out-of-order.json = ..\DataSets\device-out-of-order.json
+		..\DataSets\in-order.json = ..\DataSets\in-order.json
+		..\DataSets\queue-out-of-order.json = ..\DataSets\queue-out-of-order.json
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

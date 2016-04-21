@@ -30,6 +30,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="King.Azure">
+      <HintPath>..\packages\King.Azure.1.1.25\lib\net45\King.Azure.dll</HintPath>
+    </Reference>
+    <Reference Include="King.Service">
+      <HintPath>..\packages\King.Service.1.12.8\lib\net45\King.Service.dll</HintPath>
+    </Reference>
+    <Reference Include="King.Service.ServiceBus">
+      <HintPath>..\packages\King.Service.ServiceBus.1.1.6\lib\net45\King.Service.ServiceBus.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -42,6 +51,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Config.cs" />
+    <Compile Include="DequeueBatchProcessBatch.cs" />
+    <Compile Include="Helper.cs" />
     <Compile Include="Sample.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

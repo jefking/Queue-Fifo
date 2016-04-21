@@ -39,7 +39,6 @@
             }
             //NOT SURE IF THIS IS SPECIFIC TO HOW IT IS THEN PROCESSED
 
-
             var datas = new List<Helper>();
             foreach (var msg in msgs)
             {
