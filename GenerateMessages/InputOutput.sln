@@ -11,10 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csp
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "data", "data", "{0DCE05FD-DD1D-4812-A6F7-5AA9E5406335}"
 	ProjectSection(SolutionItems) = preProject
-		..\DataSets\batches.json = ..\DataSets\batches.json
-		..\DataSets\device-out-of-order.json = ..\DataSets\device-out-of-order.json
 		..\DataSets\in-order.json = ..\DataSets\in-order.json
-		..\DataSets\queue-out-of-order.json = ..\DataSets\queue-out-of-order.json
+		..\DataSets\out-of-order.json = ..\DataSets\out-of-order.json
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algo.Test", "Algo.Test\Algo.Test.csproj", "{681ED21A-E27E-45D8-A7E9-49877FA2EF46}"
