@@ -17,17 +17,47 @@
         [TestMethod]
         public async Task Batches()
         {
-            var processor = Substitute.For<IProcessor<Sample>>();
-            processor.Process(Arg.Any<Sample>());
-
             var batch = LoadFile("batches");
+            var processor = Substitute.For<IProcessor<Sample>>();
+            
+            var i = 0;
+            foreach (var b in batch)
+            {
+                b.Message = Substitute.For<IQueued<Sample>>();
+                if (batch.Count() * .8 >= i)
+                {
+                    processor.Process(b.Data);
+                }
+                else
+                {
+                    b.Message.Abandon();
+                }
+
+                i++;
+            }
+
+            var ordered = batch.OrderBy(h => h.Data.OccurredOn);
             var dbpb = new DequeueBatchProcessBatch(processor);
-            await dbpb.FifoPercentage(batch);
+            await dbpb.FifoPercentage(ordered);
 
             // Validate
+            i = 0;
+            foreach (var b in batch)
+            {
+                if (batch.Count() * .8 >= i)
+                {
+                    processor.Received().Process(b.Data);
+                }
+                else
+                {
+                    b.Message.Received().Abandon();
+                }
+
+                i++;
+            }
         }
 
-        public IOrderedEnumerable<Helper> LoadFile(string file)
+        public IEnumerable<Helper> LoadFile(string file)
         {
             var filePath = string.Format(@"C:\Users\jefkin\Documents\GitHub\Queue-Fifo\DataSets\{0}.json", file);
             var data = File.ReadAllText(filePath);
@@ -39,13 +69,13 @@
                 var h = new Helper
                 {
                     Data = d,
-                    Message = Substitute.For<IQueued<Sample>>()
+
                 };
 
                 helpers.Add(h);
             }
 
-            return helpers.OrderBy(h => h.Data.OccurredOn);
+            return helpers;
         }
     }
 }
