@@ -43,7 +43,7 @@
 
             // Validate
             i = 0;
-            foreach (var b in batch)
+            foreach (var b in ordered)
             {
                 if (batch.Count() * .8 >= i)
                 {
