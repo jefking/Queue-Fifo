@@ -4,12 +4,12 @@
     using Models;
     using Newtonsoft.Json;
     using NSubstitute;
+    using NUnit.Framework;
     using PullMessages;
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
     using System.Threading.Tasks;
-    using NUnit.Framework;
 
     [TestFixture]
     public class testing
@@ -25,7 +25,7 @@
             foreach (var b in batch)
             {
                 b.Message = Substitute.For<IQueued<Sample>>();
-                if (batch.Count() * .8 >= i)
+                if (b.Data.OccurredOn.Second < 9)
                 {
                     processor.Process(b.Data);
                 }
@@ -45,7 +45,7 @@
             i = 0;
             foreach (var b in ordered)
             {
-                if (batch.Count() * .8 >= i)
+                if (b.Data.OccurredOn.Second < 9)
                 {
                     processor.Received().Process(b.Data);
                 }

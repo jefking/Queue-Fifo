@@ -1,6 +1,26 @@
 [
   {
-    "OccurredOn": "2016-04-13T14:04:43",
+    "OccurredOn": "2016-01-01T00:00:02",
+    "DeviceId": "A66DBE71-F90E-497D-9116-2636F17F2C9E"
+  },
+  {
+    "OccurredOn": "2016-01-01T00:00:01",
+    "DeviceId": "A66DBE71-F90E-497D-9116-2636F17F2C9E"
+  },
+  {
+    "OccurredOn": "2016-01-01T00:00:03",
+    "DeviceId": "A66DBE71-F90E-497D-9116-2636F17F2C9E"
+  },
+  {
+    "OccurredOn": "2016-01-01T00:00:09",
+    "DeviceId": "A66DBE71-F90E-497D-9116-2636F17F2C9E"
+  },
+  {
+    "OccurredOn": "2016-01-01T00:00:10",
+    "DeviceId": "A66DBE71-F90E-497D-9116-2636F17F2C9E"
+  },
+  {
+    "OccurredOn": "2016-01-01T00:00:05",
     "DeviceId": "A66DBE71-F90E-497D-9116-2636F17F2C9E"
   },
   {
@@ -12,73 +32,11 @@
     "DeviceId": "A66DBE71-F90E-497D-9116-2636F17F2C9E"
   },
   {
-    "OccurredOn": "2016-04-13T14:04:45",
+    "OccurredOn": "2016-01-01T00:00:08",
     "DeviceId": "A66DBE71-F90E-497D-9116-2636F17F2C9E"
   },
   {
-    "OccurredOn": "2016-04-13T14:04:49",
-    "DeviceId": "A66DBE71-F90E-497D-9116-2636F17F2C9E"
-  },
-  {
-    "OccurredOn": "2016-04-13T14:04:50",
-    "DeviceId": "A66DBE71-F90E-497D-9116-2636F17F2C9E"
-  },
-  {
-    [
-      {
-        "OccurredOn": "2016-01-01T00:00:01",
-        "DeviceId": "A66DBE71-F90E-497D-9116-2636F17F2C9E"
-      },
-      {
-        "OccurredOn": "2016-01-01T00:00:02",
-        "DeviceId": "A66DBE71-F90E-497D-9116-2636F17F2C9E"
-      },
-      {
-        "OccurredOn": "2016-01-01T00:00:03",
-        "DeviceId": "A66DBE71-F90E-497D-9116-2636F17F2C9E"
-      },
-      {
-        "OccurredOn": "2016-01-01T00:00:04",
-        "DeviceId": "A66DBE71-F90E-497D-9116-2636F17F2C9E"
-      },
-      {
-        "OccurredOn": "2016-01-01T00:00:08",
-        "DeviceId": "A66DBE71-F90E-497D-9116-2636F17F2C9E"
-      },
-      {
-        "OccurredOn": "2016-01-01T00:00:09",
-        "DeviceId": "A66DBE71-F90E-497D-9116-2636F17F2C9E"
-      },
-      {
-        "OccurredOn": "2016-01-01T00:00:05",
-        "DeviceId": "A66DBE71-F90E-497D-9116-2636F17F2C9E"
-      },
-      {
-        "OccurredOn": "2016-01-01T00:00:10",
-        "DeviceId": "A66DBE71-F90E-497D-9116-2636F17F2C9E"
-      }
-    ],
-    "OccurredOn": "2016-04-13T14:04:51",
-    "DeviceId": "A66DBE71-F90E-497D-9116-2636F17F2C9E"
-  },
-  {
-    "OccurredOn": "2016-04-13T14:04:52",
-    "DeviceId": "A66DBE71-F90E-497D-9116-2636F17F2C9E"
-  },
-  {
-    "OccurredOn": "2016-04-13T14:04:44",
-    "DeviceId": "A66DBE71-F90E-497D-9116-2636F17F2C9E"
-  },
-  {
-    "OccurredOn": "2016-04-13T14:04:46",
-    "DeviceId": "A66DBE71-F90E-497D-9116-2636F17F2C9E"
-  },
-  {
-    "OccurredOn": "2016-04-13T14:04:47",
-    "DeviceId": "A66DBE71-F90E-497D-9116-2636F17F2C9E"
-  },
-  {
-    "OccurredOn": "2016-04-13T14:04:48",
+    "OccurredOn": "2016-01-01T00:00:04",
     "DeviceId": "A66DBE71-F90E-497D-9116-2636F17F2C9E"
   }
 ]
