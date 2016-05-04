@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
+﻿using Microsoft.ServiceFabric.Actors;
 using System.Threading.Tasks;
-using Microsoft.ServiceFabric.Actors;
 
 namespace Actor1.Interfaces
 {
@@ -11,7 +7,7 @@ namespace Actor1.Interfaces
     /// This interface represents the actions a client app can perform on an actor.
     /// It MUST derive from IActor and all methods MUST return a Task.
     /// </summary>
-    public interface IActor1 : IActor
+    public interface IDeviceActor : IActor
     {
         Task<int> GetCountAsync();
 

@@ -1,11 +1,8 @@
 ﻿using Actor1.Interfaces;
-using Microsoft.ServiceFabric.Actors;
-using System;
-using System.Collections.Generic;
+using Microsoft.ServiceFabric.Actors.Runtime;
 using System.Globalization;
 using System.Linq;
 using System.Runtime.Serialization;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace Actor1
@@ -15,7 +12,7 @@ namespace Actor1
     /// The IProjName  interface (in a separate DLL that client code can
     /// reference) defines the operations exposed by ProjName objects.
     /// </remarks>
-    internal class Actor1 : StatefulActor<Actor1.ActorState>, IActor1
+    internal class DeviceActor : Actor, IDeviceActor
     {
         /// <summary>
         /// This class contains each actor's replicated state.

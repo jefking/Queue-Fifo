@@ -1,8 +1,6 @@
-﻿using System;
-using System.Diagnostics;
-using System.Fabric;
+﻿using Microsoft.ServiceFabric.Actors.Runtime;
+using System;
 using System.Threading;
-using Microsoft.ServiceFabric.Actors;
 
 namespace Actor1
 {
@@ -15,17 +13,8 @@ namespace Actor1
         {
             try
             {
-                // Creating a FabricRuntime connects this host process to the Service Fabric runtime on this node.
-                using (FabricRuntime fabricRuntime = FabricRuntime.Create())
-                {
-                    // This line registers your actor class with the Fabric Runtime.
-                    // The contents of your ServiceManifest.xml and ApplicationManifest.xml files
-                    // are automatically populated when you build this project.
-                    // For more information, see http://aka.ms/servicefabricactorsplatform
-                    fabricRuntime.RegisterActor<Actor1>();
-
-                    Thread.Sleep(Timeout.Infinite);  // Prevents this host process from terminating to keep the service host process running.
-                }
+                ActorRuntime.RegisterActorAsync<DeviceActor>().GetAwaiter().GetResult();
+                Thread.Sleep(Timeout.Infinite);
             }
             catch (Exception e)
             {
