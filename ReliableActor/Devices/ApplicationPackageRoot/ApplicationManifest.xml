@@ -8,6 +8,12 @@
       <Parameter Name="AlertActorService_PartitionCount" DefaultValue="10" />
       <Parameter Name="AlertActorService_MinReplicaSetSize" DefaultValue="2" />
       <Parameter Name="AlertActorService_TargetReplicaSetSize" DefaultValue="3" />
+      <Parameter Name="GeoCodeActorService_PartitionCount" DefaultValue="10" />
+      <Parameter Name="GeoCodeActorService_MinReplicaSetSize" DefaultValue="2" />
+      <Parameter Name="GeoCodeActorService_TargetReplicaSetSize" DefaultValue="3" />
+      <Parameter Name="NotificationActorService_PartitionCount" DefaultValue="10" />
+      <Parameter Name="NotificationActorService_MinReplicaSetSize" DefaultValue="2" />
+      <Parameter Name="NotificationActorService_TargetReplicaSetSize" DefaultValue="3" />
    </Parameters>
    <ServiceManifestImport>
       <ServiceManifestRef ServiceManifestName="AlertPkg" ServiceManifestVersion="1.0.0" />
@@ -39,6 +45,16 @@
       <Service Name="AlertActorService" GeneratedIdRef="337843a7-3a97-4d7c-b666-6feeb7bddf9d|Persisted">
          <StatefulService ServiceTypeName="AlertActorServiceType" TargetReplicaSetSize="[AlertActorService_TargetReplicaSetSize]" MinReplicaSetSize="[AlertActorService_MinReplicaSetSize]">
             <UniformInt64Partition PartitionCount="[AlertActorService_PartitionCount]" LowKey="-9223372036854775808" HighKey="9223372036854775807" />
+         </StatefulService>
+      </Service>
+      <Service Name="GeoCodeActorService" GeneratedIdRef="5c2334f8-e9a1-4ed2-885b-29a2d728bb09|Persisted">
+         <StatefulService ServiceTypeName="GeoCodeActorServiceType" TargetReplicaSetSize="[GeoCodeActorService_TargetReplicaSetSize]" MinReplicaSetSize="[GeoCodeActorService_MinReplicaSetSize]">
+            <UniformInt64Partition PartitionCount="[GeoCodeActorService_PartitionCount]" LowKey="-9223372036854775808" HighKey="9223372036854775807" />
+         </StatefulService>
+      </Service>
+      <Service Name="NotificationActorService" GeneratedIdRef="2acc2fd5-eb48-4411-9149-e995b7d79cc6|Persisted">
+         <StatefulService ServiceTypeName="NotificationActorServiceType" TargetReplicaSetSize="[NotificationActorService_TargetReplicaSetSize]" MinReplicaSetSize="[NotificationActorService_MinReplicaSetSize]">
+            <UniformInt64Partition PartitionCount="[NotificationActorService_PartitionCount]" LowKey="-9223372036854775808" HighKey="9223372036854775807" />
          </StatefulService>
       </Service>
    </DefaultServices>
