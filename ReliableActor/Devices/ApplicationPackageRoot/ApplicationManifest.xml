@@ -1,17 +1,44 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="DevicesType" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
    <Parameters>
+      <Parameter Name="DataEntry_InstanceCount" DefaultValue="-1" />
       <Parameter Name="DeviceActorService_PartitionCount" DefaultValue="10" />
       <Parameter Name="DeviceActorService_MinReplicaSetSize" DefaultValue="2" />
       <Parameter Name="DeviceActorService_TargetReplicaSetSize" DefaultValue="3" />
+      <Parameter Name="AlertActorService_PartitionCount" DefaultValue="10" />
+      <Parameter Name="AlertActorService_MinReplicaSetSize" DefaultValue="2" />
+      <Parameter Name="AlertActorService_TargetReplicaSetSize" DefaultValue="3" />
    </Parameters>
+   <ServiceManifestImport>
+      <ServiceManifestRef ServiceManifestName="AlertPkg" ServiceManifestVersion="1.0.0" />
+   </ServiceManifestImport>
+   <ServiceManifestImport>
+      <ServiceManifestRef ServiceManifestName="NotificationPkg" ServiceManifestVersion="1.0.0" />
+   </ServiceManifestImport>
+   <ServiceManifestImport>
+      <ServiceManifestRef ServiceManifestName="GeoCodePkg" ServiceManifestVersion="1.0.0" />
+   </ServiceManifestImport>
+   <ServiceManifestImport>
+      <ServiceManifestRef ServiceManifestName="DataEntryPkg" ServiceManifestVersion="1.0.0" />
+      <ConfigOverrides />
+   </ServiceManifestImport>
    <ServiceManifestImport>
       <ServiceManifestRef ServiceManifestName="DevicePkg" ServiceManifestVersion="1.0.0" />
    </ServiceManifestImport>
    <DefaultServices>
+      <Service Name="DataEntry">
+         <StatelessService ServiceTypeName="DataEntryType" InstanceCount="[DataEntry_InstanceCount]">
+            <SingletonPartition />
+         </StatelessService>
+      </Service>
       <Service Name="DeviceActorService" GeneratedIdRef="342369e2-7dba-456a-a2e6-a4fa30b12b9f|Persisted">
          <StatefulService ServiceTypeName="DeviceActorServiceType" TargetReplicaSetSize="[DeviceActorService_TargetReplicaSetSize]" MinReplicaSetSize="[DeviceActorService_MinReplicaSetSize]">
             <UniformInt64Partition PartitionCount="[DeviceActorService_PartitionCount]" LowKey="-9223372036854775808" HighKey="9223372036854775807" />
+         </StatefulService>
+      </Service>
+      <Service Name="AlertActorService" GeneratedIdRef="337843a7-3a97-4d7c-b666-6feeb7bddf9d|Persisted">
+         <StatefulService ServiceTypeName="AlertActorServiceType" TargetReplicaSetSize="[AlertActorService_TargetReplicaSetSize]" MinReplicaSetSize="[AlertActorService_MinReplicaSetSize]">
+            <UniformInt64Partition PartitionCount="[AlertActorService_PartitionCount]" LowKey="-9223372036854775808" HighKey="9223372036854775807" />
          </StatefulService>
       </Service>
    </DefaultServices>

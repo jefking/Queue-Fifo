@@ -14,7 +14,11 @@
     <None Include="Scripts\Deploy-FabricApplication.ps1" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Alert\Alert.csproj" />
+    <ProjectReference Include="..\DataEntry\DataEntry.csproj" />
     <ProjectReference Include="..\Device\Device.csproj" />
+    <ProjectReference Include="..\GeoCode\GeoCode.csproj" />
+    <ProjectReference Include="..\Notification\Notification.csproj" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Service Fabric Tools\Microsoft.VisualStudio.Azure.Fabric.ApplicationProject.targets" />
 </Project>
