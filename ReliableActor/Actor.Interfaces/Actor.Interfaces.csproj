@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x64</Platform>
-    <ProjectGuid>{7A6DAF2A-E0C5-4E92-B0B9-B13D5470AB58}</ProjectGuid>
+    <ProjectGuid>{E1A0A569-9FF6-4928-A226-B113D4A0FEEA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Device.Interfaces</RootNamespace>
-    <AssemblyName>Device.Interfaces</AssemblyName>
+    <RootNamespace>GeoCode.Interfaces</RootNamespace>
+    <AssemblyName>GeoCode.Interfaces</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
@@ -67,8 +67,11 @@
     <Reference Include="System.Runtime.Serialization" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="IAlert.cs" />
     <Compile Include="IDevice.cs" />
+    <Compile Include="INotification.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="IGeoCode.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -85,9 +85,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GeoCode.Interfaces\GeoCode.Interfaces.csproj">
-      <Project>{E1A0A569-9FF6-4928-A226-B113D4A0FEEA}</Project>
-      <Name>GeoCode.Interfaces</Name>
+    <ProjectReference Include="..\Actor.Interfaces\Actor.Interfaces.csproj">
+      <Project>{e1a0a569-9ff6-4928-a226-b113d4a0feea}</Project>
+      <Name>Actor.Interfaces</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

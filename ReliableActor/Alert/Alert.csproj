@@ -85,9 +85,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Alert.Interfaces\Alert.Interfaces.csproj">
-      <Project>{E63F2E21-9F57-4761-AC96-6E552A74A786}</Project>
-      <Name>Alert.Interfaces</Name>
+    <ProjectReference Include="..\Actor.Interfaces\Actor.Interfaces.csproj">
+      <Project>{e1a0a569-9ff6-4928-a226-b113d4a0feea}</Project>
+      <Name>Actor.Interfaces</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
