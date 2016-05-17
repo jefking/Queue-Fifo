@@ -7,7 +7,7 @@ using System.Web.Http;
 
 namespace DataEntry.Controllers
 {
-    public class ValuesController : ApiController
+    public class TestController : ApiController
     {
         // GET api/values 
         public async Task<bool> Get(Guid id)
