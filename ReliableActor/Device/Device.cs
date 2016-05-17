@@ -19,6 +19,7 @@ namespace Device
             var geo = await geoActor.GetPosition();
 
             var alertActor = ActorProxy.Create<IAlert>(actorId, new Uri("fabric:/Devices/AlertActorService"));
+
             var alert = await alertActor.Notify(id);
             if (alert)
             {
