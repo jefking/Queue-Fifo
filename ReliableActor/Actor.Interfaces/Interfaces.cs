@@ -2,7 +2,7 @@
 using System;
 using System.Threading.Tasks;
 
-namespace GeoCode.Interfaces
+namespace Actors.Interfaces
 {
     public interface INotification : IActor
     {
@@ -19,10 +19,6 @@ namespace GeoCode.Interfaces
     }
     public interface IAlert : IActor
     {
-        /// <summary>
-        /// TODO: Replace with your own actor method.
-        /// </summary>
-        /// <returns></returns>
         Task<bool> Notify(Guid g);
     }
 }

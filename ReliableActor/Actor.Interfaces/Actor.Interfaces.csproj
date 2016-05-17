@@ -67,12 +67,8 @@
     <Reference Include="System.Runtime.Serialization" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IAlert.cs" />
-    <Compile Include="IDevice.cs" />
-    <Compile Include="INotification.cs" />
     <Compile Include="Interfaces.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="IGeoCode.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

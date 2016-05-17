@@ -1,5 +1,4 @@
-﻿using Alert.Interfaces;
-using Device.Interfaces;
+﻿using Actors.Interfaces;
 using Microsoft.ServiceFabric.Actors;
 using Microsoft.ServiceFabric.Actors.Client;
 using Microsoft.ServiceFabric.Actors.Runtime;
@@ -8,18 +7,10 @@ using System.Threading.Tasks;
 
 namespace Device
 {
-    /// <remarks>
-    /// This class represents an actor.
-    /// Every ActorID maps to an instance of this class.
-    /// The StatePersistence attribute determines persistence and replication of actor state:
-    ///  - Persisted: State is written to disk and replicated.
-    ///  - Volatile: State is kept in memory only and replicated.
-    ///  - None: State is kept in memory only and not replicated.
-    /// </remarks>
     [StatePersistence(StatePersistence.Volatile)]
     internal class Device : Actor, IDevice
     {
-        public async Task<bool> Process(Guid id)
+        public Task<bool> Process(Guid id)
         {
             // Create a randomly distributed actor ID
             var actorId = ActorId.CreateRandom();
@@ -28,10 +19,7 @@ namespace Device
             var geoActor = ActorProxy.Create<IGeoCode>(actorId, new Uri("fabric:/MyApp/MyActorService"));
             var alertActor = ActorProxy.Create<IAlert>(actorId, new Uri("fabric:/MyApp/MyActorService"));
 
-            // This will invoke a method on the actor. If an actor with the given ID does not exist, it will be activated by this method call.
-            await myActor.DoWorkAsync();
-
-            return true;
+            return Task.FromResult(true);
         }
 
         /// <summary>

@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ServiceManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Name="DevicePkg" Version="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
    <ServiceTypes>
-      <StatefulServiceType ServiceTypeName="DeviceActorServiceType" HasPersistedState="true">
+      <StatefulServiceType ServiceTypeName="DeviceActorServiceType">
          <Extensions>
-            <Extension Name="__GeneratedServiceType__" GeneratedId="342369e2-7dba-456a-a2e6-a4fa30b12b9f|Persisted">
+            <Extension Name="__GeneratedServiceType__" GeneratedId="3aa9b59c-3f7e-49ef-9075-83ec6713dcf8|Volatile">
                <GeneratedNames xmlns="http://schemas.microsoft.com/2015/03/fabact-no-schema">
                   <DefaultService Name="DeviceActorService" />
                   <ServiceEndpoint Name="DeviceActorServiceEndpoint" />

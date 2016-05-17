@@ -73,6 +73,7 @@
     <Reference Include="System.Runtime.Serialization" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IAlert.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Alert.cs" />
     <Compile Include="Program.cs" />
