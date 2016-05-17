@@ -37,7 +37,7 @@
             <SingletonPartition />
          </StatelessService>
       </Service>
-      <Service Name="DeviceActorService" GeneratedIdRef="342369e2-7dba-456a-a2e6-a4fa30b12b9f|Persisted">
+      <Service Name="DeviceActorService" GeneratedIdRef="3aa9b59c-3f7e-49ef-9075-83ec6713dcf8|Volatile">
          <StatefulService ServiceTypeName="DeviceActorServiceType" TargetReplicaSetSize="[DeviceActorService_TargetReplicaSetSize]" MinReplicaSetSize="[DeviceActorService_MinReplicaSetSize]">
             <UniformInt64Partition PartitionCount="[DeviceActorService_PartitionCount]" LowKey="-9223372036854775808" HighKey="9223372036854775807" />
          </StatefulService>
