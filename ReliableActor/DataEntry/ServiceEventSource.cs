@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.Tracing;
-using System.Fabric;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.ServiceFabric.Services.Runtime;
-
-namespace DataEntry
+﻿namespace DataEntry
 {
+    using System;
+    using System.Diagnostics.Tracing;
+    using System.Fabric;
+    using System.Threading.Tasks;
+
     [EventSource(Name = "MyCompany-Devices-DataEntry")]
     internal sealed class ServiceEventSource : EventSource
     {

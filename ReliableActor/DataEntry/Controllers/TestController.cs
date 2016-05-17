@@ -1,15 +1,14 @@
-﻿using Actors.Interfaces;
-using Microsoft.ServiceFabric.Actors;
-using Microsoft.ServiceFabric.Actors.Client;
-using System;
-using System.Threading.Tasks;
-using System.Web.Http;
-
-namespace DataEntry.Controllers
+﻿namespace DataEntry.Controllers
 {
+    using Actors.Interfaces;
+    using Microsoft.ServiceFabric.Actors;
+    using Microsoft.ServiceFabric.Actors.Client;
+    using System;
+    using System.Threading.Tasks;
+    using System.Web.Http;
+
     public class TestController : ApiController
     {
-        // GET api/values 
         public async Task<bool> Get(Guid id)
         {
             var actorId = ActorId.CreateRandom();

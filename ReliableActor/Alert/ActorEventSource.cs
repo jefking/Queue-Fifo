@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.Tracing;
-using System.Fabric;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.ServiceFabric.Actors.Runtime;
-
-namespace Alert
+﻿namespace Alert
 {
+    using Microsoft.ServiceFabric.Actors.Runtime;
+    using System;
+    using System.Diagnostics.Tracing;
+    using System.Threading.Tasks;
+
     [EventSource(Name = "MyCompany-Devices-Alert")]
     internal sealed class ActorEventSource : EventSource
     {

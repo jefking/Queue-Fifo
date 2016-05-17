@@ -1,10 +1,10 @@
-﻿using System;
-using System.Diagnostics.Tracing;
-using System.Threading.Tasks;
-using Microsoft.ServiceFabric.Actors.Runtime;
-
-namespace Device
+﻿namespace Device
 {
+    using Microsoft.ServiceFabric.Actors.Runtime;
+    using System;
+    using System.Diagnostics.Tracing;
+    using System.Threading.Tasks;
+
     [EventSource(Name = "MyCompany-Devices-Device")]
     internal sealed class ActorEventSource : EventSource
     {

@@ -1,14 +1,11 @@
-﻿using Microsoft.ServiceFabric.Actors.Runtime;
-using System;
-using System.Threading;
-
-namespace Device
+﻿namespace Device
 {
+    using Microsoft.ServiceFabric.Actors.Runtime;
+    using System;
+    using System.Threading;
+
     internal static class Program
     {
-        /// <summary>
-        /// This is the entry point of the service host process.
-        /// </summary>
         private static void Main()
         {
             try

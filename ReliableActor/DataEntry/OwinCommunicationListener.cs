@@ -1,14 +1,14 @@
-﻿using Microsoft.Owin.Hosting;
-using Microsoft.ServiceFabric.Services.Communication.Runtime;
-using Owin;
-using System;
-using System.Fabric;
-using System.Globalization;
-using System.Threading;
-using System.Threading.Tasks;
-
-namespace DataEntry
+﻿namespace DataEntry
 {
+    using Microsoft.Owin.Hosting;
+    using Microsoft.ServiceFabric.Services.Communication.Runtime;
+    using Owin;
+    using System;
+    using System.Fabric;
+    using System.Globalization;
+    using System.Threading;
+    using System.Threading.Tasks;
+
     internal class OwinCommunicationListener : ICommunicationListener
     {
         private readonly ServiceEventSource eventSource;

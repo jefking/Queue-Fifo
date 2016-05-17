@@ -1,12 +1,12 @@
-﻿using Actors.Interfaces;
-using Microsoft.ServiceFabric.Actors;
-using Microsoft.ServiceFabric.Actors.Client;
-using Microsoft.ServiceFabric.Actors.Runtime;
-using System;
-using System.Threading.Tasks;
-
-namespace Device
+﻿namespace Device
 {
+    using Actors.Interfaces;
+    using Microsoft.ServiceFabric.Actors;
+    using Microsoft.ServiceFabric.Actors.Client;
+    using Microsoft.ServiceFabric.Actors.Runtime;
+    using System;
+    using System.Threading.Tasks;
+
     [StatePersistence(StatePersistence.Volatile)]
     internal class Device : Actor, IDevice
     {

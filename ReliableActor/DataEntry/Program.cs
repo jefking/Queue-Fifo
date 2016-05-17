@@ -1,10 +1,10 @@
-﻿using Microsoft.ServiceFabric.Services.Runtime;
-using System;
-using System.Diagnostics;
-using System.Threading;
-
-namespace DataEntry
+﻿namespace DataEntry
 {
+    using Microsoft.ServiceFabric.Services.Runtime;
+    using System;
+    using System.Diagnostics;
+    using System.Threading;
+
     internal static class Program
     {
         private static void Main()
