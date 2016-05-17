@@ -7,8 +7,8 @@
     <ProjectGuid>{E1A0A569-9FF6-4928-A226-B113D4A0FEEA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GeoCode.Interfaces</RootNamespace>
-    <AssemblyName>GeoCode.Interfaces</AssemblyName>
+    <RootNamespace>Actors.Interfaces</RootNamespace>
+    <AssemblyName>Actors.Interfaces</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
@@ -70,6 +70,7 @@
     <Compile Include="IAlert.cs" />
     <Compile Include="IDevice.cs" />
     <Compile Include="INotification.cs" />
+    <Compile Include="Interfaces.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="IGeoCode.cs" />
   </ItemGroup>

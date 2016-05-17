@@ -1,10 +1,10 @@
-﻿using System;
-using System.Threading.Tasks;
-using Alert.Interfaces;
+﻿using Alert.Interfaces;
 using Device.Interfaces;
 using Microsoft.ServiceFabric.Actors;
 using Microsoft.ServiceFabric.Actors.Client;
 using Microsoft.ServiceFabric.Actors.Runtime;
+using System;
+using System.Threading.Tasks;
 
 namespace Device
 {
@@ -22,10 +22,11 @@ namespace Device
         public async Task<bool> Process(Guid id)
         {
             // Create a randomly distributed actor ID
-            ActorId actorId = ActorId.CreateRandom();
+            var actorId = ActorId.CreateRandom();
 
             // This only creates a proxy object, it does not activate an actor or invoke any methods yet.
-            IAlert myActor = ActorProxy.Create<IAlert>(actorId, new Uri("fabric:/MyApp/MyActorService"));
+            var geoActor = ActorProxy.Create<IGeoCode>(actorId, new Uri("fabric:/MyApp/MyActorService"));
+            var alertActor = ActorProxy.Create<IAlert>(actorId, new Uri("fabric:/MyApp/MyActorService"));
 
             // This will invoke a method on the actor. If an actor with the given ID does not exist, it will be activated by this method call.
             await myActor.DoWorkAsync();

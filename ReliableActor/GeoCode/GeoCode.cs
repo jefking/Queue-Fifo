@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.ServiceFabric.Actors;
+﻿using GeoCode.Interfaces;
 using Microsoft.ServiceFabric.Actors.Runtime;
-using Microsoft.ServiceFabric.Actors.Client;
-using GeoCode.Interfaces;
+using System;
+using System.Threading.Tasks;
 
 namespace GeoCode
 {
@@ -21,41 +16,14 @@ namespace GeoCode
     [StatePersistence(StatePersistence.Persisted)]
     internal class GeoCode : Actor, IGeoCode
     {
-        /// <summary>
-        /// This method is called whenever an actor is activated.
-        /// An actor is activated the first time any of its methods are invoked.
-        /// </summary>
-        protected override Task OnActivateAsync()
+        public Task<double[]> GetPosition()
         {
-            ActorEventSource.Current.ActorMessage(this, "Actor activated.");
+            var random = new Random();
 
-            // The StateManager is this actor's private state store.
-            // Data stored in the StateManager will be replicated for high-availability for actors that use volatile or persisted state storage.
-            // Any serializable object can be saved in the StateManager.
-            // For more information, see http://aka.ms/servicefabricactorsstateserialization
+            double lat = random.Next();
+            double lng = random.Next();
 
-            return this.StateManager.TryAddStateAsync("count", 0);
-        }
-
-        /// <summary>
-        /// TODO: Replace with your own actor method.
-        /// </summary>
-        /// <returns></returns>
-        Task<int> IGeoCode.GetCountAsync()
-        {
-            return this.StateManager.GetStateAsync<int>("count");
-        }
-
-        /// <summary>
-        /// TODO: Replace with your own actor method.
-        /// </summary>
-        /// <param name="count"></param>
-        /// <returns></returns>
-        Task IGeoCode.SetCountAsync(int count)
-        {
-            // Requests are not guaranteed to be processed in order nor at most once.
-            // The update function here verifies that the incoming count is greater than the current count to preserve order.
-            return this.StateManager.AddOrUpdateStateAsync("count", count, (key, value) => count > value ? count : value);
+            return Task.FromResult(new double[] { lat, lng });
         }
     }
 }
